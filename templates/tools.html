@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://images-ext-1.discordapp.net/external/uWO6d-v6OeWWo-98IJqaNyTdl1or1QfM3DJa04baIX0/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1141739558187302952/c2dfbcf9a0757e9ca15f00558954d471.png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('https://cdn.discordapp.com/attachments/1128409837483606128/1147232250287620127/background.jpg') center center no-repeat;
+            font-family: 'Your-Futuristic-Font', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        .arrow {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 40px;
+            color: white;
+            content: "◄"; 
+            text-decoration: none; 
+            line-height: 1; 
+            z-index: 999; 
+        }
+
+        .arrow:hover {
+            cursor: pointer; 
+        }
+
+        .title-line {
+            width: 100px;
+            height: 3px;
+            background-color: White;
+            margin: 10px 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            position: relative;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: transparent;
+            border: 2px solid DodgerBlue;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            border-radius: 20px;
+        }
+
+        .crown-icon {
+            position: absolute;
+            top: 4px;
+            right: 1px;
+            color: yellow;
+        }
+
+        .crown-icon::after {
+            content: "Premium users only"; /* Text to display on hover */
+            position: absolute;
+            top: 20px;
+            right: -50px; /* Adjust the positioning */
+            background-color: black;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .button:hover .crown-icon::after {
+            opacity: 1; /* Show the text on hover */
+        }
+
+        .button:hover {
+            background-color: dodgerblue;
+            color: White;
+        }
+
+        @media screen and (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+    <title>Notbang™ - Tools</title>
+    <script>
+        function GoToIpGrabber() {
+            var IpGrabberPage = "https://webserver.xolo2.repl.co/ip-grabber";
+            window.location.href = IpGrabberPage;
+        }
+
+        function GoToPackageGrabber() {
+            var PackageGrabberPage = "https://webserver.xolo2.repl.co/package-grabber";
+            window.location.href = PackageGrabberPage;
+        }
+
+        function GoToUserLookup() {
+            var UserLookupPage = "lookup";
+            window.location.href = UserLookupPage;
+        }
+
+        function GoToPhish() {
+            var PhishPage = "ph-links";
+            window.location.href = PhishPage;
+        }
+        
+        function GoToNuke() {
+            var PhishPage = "nuke-bot";
+            window.location.href = PhishPage;
+        }
+      
+    </script>
+</head>
+<body>
+    <h1>Tools</h1>
+    <div class="title-line"></div>
+    <div class="button-container">
+        <a class="arrow" href="https://webserver.xolo2.repl.co/">◄</a>
+        <div class="container">
+            <button class="button" id="IpGrabberButton">Ip Grabber</button>
+            <button class="button" id="PackageGrabberButton">Package Grabber</button>
+            <button class="button" id="PhishLink">Fake Links</button>
+            <button class="button" id="NukeBot">Nuke Bot</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("IpGrabberButton").addEventListener("click", GoToIpGrabber);
+        document.getElementById("PackageGrabberButton").addEventListener("click", GoToPackageGrabber);
+        document.getElementById("PhishLink").addEventListener("click", GoToPhish);
+        document.getElementById("NukeBot").addEventListener("click", GoToNuke);
+    </script>
+</body>
+</html>

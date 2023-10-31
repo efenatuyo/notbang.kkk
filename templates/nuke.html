@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notbang™ | Discord Nuker</title>
+    <link rel="icon" href="https://images-ext-1.discordapp.net/external/uWO6d-v6OeWWo-98IJqaNyTdl1or1QfM3DJa04baIX0/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1141739558187302952/c2dfbcf9a0757e9ca15f00558954d471.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://cdn.discordapp.com/attachments/1128409837483606128/1147232250287620127/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .arrow {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 40px;
+            color: white;
+            content: "◄";
+            line-height: 1;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .arrow:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .container {
+            background-color: rgba(24, 25, 26, 0.8);
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 2%; /* Changed padding for mobile responsiveness */
+            max-width: 400px; /* Set a maximum width for better readability on small screens */
+            margin: 0 auto 20px auto; /* Centering container */
+            color: #fff;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+        }
+
+        input#term {
+            width: 100%; /* Adjusted width for mobile */
+        }
+
+        input#bottoken {
+            width: 100%; /* Adjusted width for mobile */
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        #result {
+            white-space: pre-wrap;
+            background-color: #292828;
+            padding: 7%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            /* Adjustments for smaller screens (e.g., tablets and mobile devices) */
+            .container {
+                padding: 5%; /* Increase padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="arrow" href="https://webserver.xolo2.repl.co/tools">◄</a>
+    <div class="container">
+        <h1>Notbang Nuker</h1>
+        <form id="lookup-form">
+            <label for="bottoken">Bot Token:</label>
+            <input type="text" id="bottoken" name="bottoken" required>
+
+            <label for="term">Server ID:</label>
+            <input type="text" id="term" name="term" required>
+
+            <label for="type">Nuke Type:</label>
+            <select id="type" name="type">
+                <option value="1">Mass Ban</option>
+                <option value="2">Mass Kick</option>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("lookup-form");
+        const resultDiv = document.getElementById("result");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const term = form.elements.term.value;
+            const type = form.elements.type.value;
+            const bottoken = form.elements.bottoken.value;
+
+            const data = {
+                server: term,
+                type: type,
+                token: bottoken
+            };
+
+            const response = await fetch("https://webserver.xolo2.repl.co/nuke", {
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+
+            const responseData = await response.json();
+
+            const responseString = JSON.stringify(responseData, null, 2);
+
+            // If the response data is too big, show a download link
+            if (responseString.length > 1000) {
+                // Create a Blob containing the JSON data
+                const blob = new Blob([responseString], {});
+
+                // Create a temporary URL for the Blob
+                const blobUrl = URL.createObjectURL(blob);
+
+                // Create a download link
+                const downloadLink = document.createElement("a");
+                downloadLink.href = blobUrl;
+                downloadLink.download = "search_results.json";
+                downloadLink.textContent = "Download Results";
+
+                // Append the link to the resultDiv
+                resultDiv.innerHTML = ""; // Clear any previous results
+                resultDiv.appendChild(downloadLink);
+            } else {
+                resultDiv.innerHTML = "<pre>" + responseString + "</pre>";
+            }
+        });
+    </script>
+</body>
+</html>

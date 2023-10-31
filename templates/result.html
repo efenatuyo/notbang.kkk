@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result - Roblox Cookie Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .cookie-box {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .cookie-text {
+            font-size: 18px;
+            word-break: break-all;
+            display: none;
+            margin-top: 10px;
+        }
+        .show-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .show-button:hover {
+            background-color: #0056b3;
+        }
+        .copy-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 5px;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generated New Auth Cookie</h1>
+        <div class="cookie-box">
+            <button class="show-button" onclick="toggleCookie()">Show Full Cookie</button>
+            <p class="cookie-text" id="cookie-text">{{ new_auth_cookie }}</p>
+            <button class="copy-button" onclick="copyCookie()">Copy</button>
+        </div>
+        <a href="/refresh/{{ id }}">Generate Another Cookie</a>
+    </div>
+
+<script>
+    function toggleCookie() {
+        var cookieText = document.getElementById('cookie-text');
+        var showButton = document.querySelector('.show-button');
+        if (cookieText.style.display === 'none') {
+            cookieText.style.display = 'block';
+            showButton.innerText = 'Hide Full Cookie';
+        } else {
+            cookieText.style.display = 'none';
+            showButton.innerText = 'Show Full Cookie';
+        }
+    }
+
+    async function copyCookie() {
+        var cookieText = document.getElementById('cookie-text').innerText;
+
+        try {
+            await navigator.clipboard.writeText(cookieText);
+            alert('Cookie copied to clipboard!');
+        } catch (err) {
+            console.error('Error copying to clipboard:', err);
+            alert('Failed to copy cookie to clipboard.');
+        }
+    }
+</script>
+</body>
+</html>
